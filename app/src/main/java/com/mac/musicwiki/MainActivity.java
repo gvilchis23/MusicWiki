@@ -14,7 +14,7 @@ import com.mac.musicwiki.login.LoginFragment;
 public class MainActivity extends AppCompatActivity {
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "memoPilgrim";
-    private static final String TWITTER_SECRET = "tarantino";
+    private static final String TWITTER_SECRET = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
