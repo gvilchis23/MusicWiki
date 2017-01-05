@@ -6,6 +6,8 @@ import com.mac.musicwiki.search.view.SearchView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -22,6 +24,11 @@ public class SearchPresenterImpl implements SearchPresenter {
     public static final String BASE_URL = "https://deezerdevs-deezer.p.mashape.com/";
     SearchVO searchVo;
     SearchView view;
+
+    @Inject
+    public SearchPresenterImpl(){
+
+    }
 
     @Override
     public void attachView(SearchView view) {

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.mac.musicwiki.App;
 import com.mac.musicwiki.MainActivity;
 import com.mac.musicwiki.R;
 import com.mac.musicwiki.search.adapter.ArtistSearchAdapter;
@@ -20,8 +21,11 @@ import com.mac.musicwiki.search.presenter.SearchPresenterImpl;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class SearchActivity extends AppCompatActivity implements SearchView {
-    private SearchPresenter searchPresenter;
+    @Inject
+    SearchPresenter searchPresenter;
     private EditText artistText;
     private RecyclerView recyclerView;
     private ArtistSearchAdapter sAdapter;
@@ -30,7 +34,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        searchPresenter = new SearchPresenterImpl();
+        //searchPresenter = new SearchPresenterImpl();
+        App.getAppComponent(this).inject(this);
         searchPresenter.attachView(this);
         artistText = (EditText) findViewById(R.id.searchInput);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
