@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mac.musicwiki.App;
 import com.mac.musicwiki.MainActivity;
@@ -54,8 +55,12 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     public void createRecycler(List<Datum> data) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        sAdapter = new ArtistSearchAdapter(data);
-        recyclerView.setAdapter(sAdapter);
+        recyclerView.setAdapter(new ArtistSearchAdapter(data, new ArtistSearchAdapter.OnItemClickListener() {
+            @Override public void onItemClick(Datum item) {
+                Toast.makeText(SearchActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
+            }
+        }));
+
     }
 
     @Override

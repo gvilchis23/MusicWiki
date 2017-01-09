@@ -19,6 +19,11 @@ import java.util.List;
 public class ArtistSearchAdapter extends RecyclerView.Adapter<ArtistSearchAdapter.MyViewHolder> {
 
     private List<Datum> artistAllList;
+    private final OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(Datum item);
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, album, cover;
@@ -31,9 +36,23 @@ public class ArtistSearchAdapter extends RecyclerView.Adapter<ArtistSearchAdapte
             cover = (TextView) view.findViewById(R.id.cover);
 
         }
+
+        public void bind(final Datum item, final OnItemClickListener listener) {
+            name.setText(item.getArtist().getName());
+            album.setText(item.getAlbum().getTitle());
+            cover.setText(item.getAlbum().getTitle());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
+        }
+
     }
-    public ArtistSearchAdapter(List<Datum> artistAllList) {
+    public ArtistSearchAdapter(List<Datum> artistAllList, OnItemClickListener listener) {
         this.artistAllList = artistAllList;
+        this.listener = listener;
+
     }
 
     @Override
@@ -46,10 +65,7 @@ public class ArtistSearchAdapter extends RecyclerView.Adapter<ArtistSearchAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Datum data = artistAllList.get(position);
-        holder.name.setText(data.getArtist().getName());
-        holder.album.setText(data.getAlbum().getTitle());
-        holder.cover.setText(data.getAlbum().getTitle());
+        holder.bind(artistAllList.get(position),listener);
     }
 
     @Override
