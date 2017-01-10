@@ -1,12 +1,16 @@
 package com.mac.musicwiki.search.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mac.musicwiki.R;
+import com.mac.musicwiki.album.view.AlbumActivity;
 import com.mac.musicwiki.search.model.Datum;
 import com.mac.musicwiki.search.model.SearchVO;
 
@@ -26,21 +30,26 @@ public class ArtistSearchAdapter extends RecyclerView.Adapter<ArtistSearchAdapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, album, cover;
+        public TextView name, album;
+        public ImageView cover;
 
 
         public MyViewHolder(View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.name);
             album = (TextView) view.findViewById(R.id.album);
-            cover = (TextView) view.findViewById(R.id.cover);
+            cover = (ImageView) view.findViewById(R.id.cover);
 
         }
 
         public void bind(final Datum item, final OnItemClickListener listener) {
-            name.setText(item.getArtist().getName());
-            album.setText(item.getAlbum().getTitle());
-            cover.setText(item.getAlbum().getTitle());
+
+            name.setText(item.getArtist().getName().trim());
+
+            album.setText(item.getAlbum().getTitle().trim());
+            Glide.with(itemView.getContext()).load(item.getAlbum().getCoverMedium())
+                    .override(80,60).into(cover);
+//            track.setText(item.getTitle());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);
