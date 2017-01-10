@@ -6,20 +6,18 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mac.musicwiki.App;
-import com.mac.musicwiki.MainActivity;
 import com.mac.musicwiki.R;
 import com.mac.musicwiki.album.view.AlbumActivity;
-import com.mac.musicwiki.search.adapter.ArtistSearchAdapter;
+import com.mac.musicwiki.adapter.ArtistSearchAdapter;
 import com.mac.musicwiki.search.model.Datum;
 import com.mac.musicwiki.search.model.SearchVO;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
-import com.mac.musicwiki.search.presenter.SearchPresenterImpl;
 
 import java.util.List;
 
@@ -70,5 +68,24 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     protected void onDestroy() {
         super.onDestroy();
         searchPresenter.detachView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.add:
+            //add the function to perform here
+            return(true);
+        case R.id.fav:
+            //add the function to perform here
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 }

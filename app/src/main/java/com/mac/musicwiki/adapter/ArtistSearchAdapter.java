@@ -1,4 +1,4 @@
-package com.mac.musicwiki.search.adapter;
+package com.mac.musicwiki.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.mac.musicwiki.R;
 import com.mac.musicwiki.search.model.Datum;
-import com.mac.musicwiki.search.model.SearchVO;
 
 import java.util.List;
 
