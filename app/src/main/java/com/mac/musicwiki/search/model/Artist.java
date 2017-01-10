@@ -4,7 +4,9 @@ package com.mac.musicwiki.search.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Artist {
+import java.io.Serializable;
+
+public class Artist implements Serializable {
 
     @SerializedName("id")
     @Expose

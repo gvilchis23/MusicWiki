@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.mac.musicwiki.App;
 import com.mac.musicwiki.MainActivity;
 import com.mac.musicwiki.R;
+import com.mac.musicwiki.album.view.AlbumActivity;
 import com.mac.musicwiki.search.adapter.ArtistSearchAdapter;
 import com.mac.musicwiki.search.model.Datum;
 import com.mac.musicwiki.search.model.SearchVO;
@@ -24,22 +25,22 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SearchActivity extends AppCompatActivity implements SearchView {
     @Inject
     SearchPresenter searchPresenter;
-    private EditText artistText;
-    private RecyclerView recyclerView;
-    private ArtistSearchAdapter sAdapter;
+    @BindView(R.id.searchInput) EditText artistText;
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        //searchPresenter = new SearchPresenterImpl();
         App.getAppComponent(this).inject(this);
         searchPresenter.attachView(this);
-        artistText = (EditText) findViewById(R.id.searchInput);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        ButterKnife.bind(this);
     }
 
     public void searchArtist(View view) {
@@ -57,7 +58,9 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new ArtistSearchAdapter(data, new ArtistSearchAdapter.OnItemClickListener() {
             @Override public void onItemClick(Datum item) {
-                Toast.makeText(SearchActivity.this, "Item Clicked", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(SearchActivity.this, AlbumActivity.class);
+                i.putExtra("album", item);
+                startActivity(i);
             }
         }));
 
