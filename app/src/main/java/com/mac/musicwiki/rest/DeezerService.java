@@ -1,7 +1,6 @@
-package com.mac.musicwiki.search.rest;
+package com.mac.musicwiki.rest;
 
 
-import java.util.List;
 import com.mac.musicwiki.search.model.SearchVO;
 import retrofit2.Call;
 import retrofit2.http.GET;

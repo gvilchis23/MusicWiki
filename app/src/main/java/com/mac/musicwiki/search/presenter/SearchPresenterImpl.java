@@ -1,10 +1,8 @@
 package com.mac.musicwiki.search.presenter;
 
 import com.mac.musicwiki.search.model.SearchVO;
-import com.mac.musicwiki.search.rest.DeezerService;
+import com.mac.musicwiki.rest.DeezerService;
 import com.mac.musicwiki.search.view.SearchView;
-
-import java.util.List;
 
 import javax.inject.Inject;
 

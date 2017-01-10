@@ -1,4 +1,4 @@
-package com.mac.musicwiki.search.adapter;
+package com.mac.musicwiki.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide;
 import com.mac.musicwiki.R;
 import com.mac.musicwiki.album.view.AlbumActivity;
 import com.mac.musicwiki.search.model.Datum;
-import com.mac.musicwiki.search.model.SearchVO;
 
 import java.util.List;
 
