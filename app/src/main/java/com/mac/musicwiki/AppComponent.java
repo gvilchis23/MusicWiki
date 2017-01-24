@@ -1,5 +1,6 @@
 package com.mac.musicwiki;
 
+import com.mac.musicwiki.album.view.AlbumActivity;
 import com.mac.musicwiki.search.view.SearchActivity;
 
 import javax.inject.Singleton;
@@ -13,5 +14,6 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
     SearchActivity inject(SearchActivity activity);
+    AlbumActivity inject(AlbumActivity activity);
 }
 

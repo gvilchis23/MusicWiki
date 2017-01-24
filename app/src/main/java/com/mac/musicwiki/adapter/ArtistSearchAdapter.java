@@ -1,5 +1,6 @@
 package com.mac.musicwiki.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.bumptech.glide.Glide;
 import com.mac.musicwiki.R;
@@ -42,13 +44,9 @@ public class ArtistSearchAdapter extends RecyclerView.Adapter<ArtistSearchAdapte
         }
 
         public void bind(final Datum item, final OnItemClickListener listener) {
-
             name.setText(item.getArtist().getName().trim());
-
             album.setText(item.getAlbum().getTitle().trim());
-            Glide.with(itemView.getContext()).load(item.getAlbum().getCoverMedium())
-                    .override(80,60).into(cover);
-//            track.setText(item.getTitle());
+            Glide.with(itemView.getContext()).load(item.getArtist().getPicture()).into(cover);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);
@@ -57,6 +55,8 @@ public class ArtistSearchAdapter extends RecyclerView.Adapter<ArtistSearchAdapte
         }
 
     }
+
+
     public ArtistSearchAdapter(List<Datum> artistAllList, OnItemClickListener listener) {
         this.artistAllList = artistAllList;
         this.listener = listener;
@@ -65,8 +65,7 @@ public class ArtistSearchAdapter extends RecyclerView.Adapter<ArtistSearchAdapte
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.search_artist_list_row, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_artist_list_row, parent, false);
 
         return new MyViewHolder(itemView);
     }

@@ -1,5 +1,7 @@
 package com.mac.musicwiki;
 
+import com.mac.musicwiki.album.presenter.AlbumPresenter;
+import com.mac.musicwiki.album.presenter.AlbumPresenterImpl;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
 import com.mac.musicwiki.search.presenter.SearchPresenterImpl;
 
@@ -25,6 +27,12 @@ public class AppModule {
     @Singleton
     SearchPresenter provideSearchPresenter() {
         return new SearchPresenterImpl();
+    }
+
+    @Provides
+    @Singleton
+    AlbumPresenter provideAlbumPresenter() {
+        return new AlbumPresenterImpl();
     }
 
 }
