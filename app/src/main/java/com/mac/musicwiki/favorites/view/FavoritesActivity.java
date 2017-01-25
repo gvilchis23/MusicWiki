@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 
 import com.mac.musicwiki.App;
@@ -50,5 +52,22 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesVie
     public List<FavoriteVO> getAllFavorites() {
         favoritesPresenter.attachDB(db);
         return favoritesPresenter.getAllFavorites();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_fav, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.search:
+            Intent i = new Intent(FavoritesActivity.this, SearchActivity.class);
+            startActivity(i);
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 }

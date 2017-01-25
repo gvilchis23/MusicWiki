@@ -5,9 +5,9 @@
 
 
         <item
-            android:id="@+id/fav"
-            android:icon="@android:drawable/btn_star"
+            android:id="@+id/search"
+            android:icon="@android:drawable/ic_menu_search"
             app:showAsAction="always"
-            android:title="@string/fav"/>
+            android:title="@string/search"/>
 </menu>
 
