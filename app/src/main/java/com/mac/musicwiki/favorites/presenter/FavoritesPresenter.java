@@ -14,4 +14,5 @@ import java.util.List;
 public interface FavoritesPresenter extends BasePresenter<FavoritesView> {
     void attachDB(DatabaseHandler db);
     List<FavoriteVO> getAllFavorites();
+    boolean deleteFavorite(FavoriteVO fav);
 }

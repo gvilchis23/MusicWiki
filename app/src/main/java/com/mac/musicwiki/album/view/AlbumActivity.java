@@ -62,7 +62,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         FavoriteVO vo = new FavoriteVO();
         vo.setName(item.getArtist().getName());
         vo.setAlbum(item.getAlbum().getTitle());
-        vo.setRating(ratingBar.getNumStars());
+        vo.setRating(ratingBar.getRating());
         vo.setPicture(item.getArtist().getPicture());
         return vo;
     }

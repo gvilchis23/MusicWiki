@@ -45,4 +45,9 @@ public class FavoritesPresenterImpl implements FavoritesPresenter {
         return db.getAllFavoriteArtist();
     }
 
+    @Override
+    public boolean deleteFavorite(FavoriteVO fav) {
+        return db.deleteFavArtist(fav);
+    }
+
 }

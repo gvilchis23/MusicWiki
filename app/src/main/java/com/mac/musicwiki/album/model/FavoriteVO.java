@@ -26,7 +26,7 @@ public class FavoriteVO implements Serializable {
     private String picture;
     @SerializedName("rating")
     @Expose
-    private Integer rating;
+    private float rating;
 
     public Integer getId() {
         return id;
@@ -60,11 +60,11 @@ public class FavoriteVO implements Serializable {
         this.picture = picture;
     }
 
-    public Integer getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 }

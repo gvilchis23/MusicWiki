@@ -35,7 +35,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_FAVORITE_TABLE = "CREATE TABLE " + TABLE_FAVORITE + "("
         + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
         + KEY_ALBUM + " TEXT," + KEY_PICTURE + " TEXT,"
-        + KEY_RATING + " INTEGER" + ")";
+        + KEY_RATING + " REAL" + ")";
         sqLiteDatabase.execSQL(CREATE_FAVORITE_TABLE);
     }
 
@@ -69,16 +69,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 fav.setName(cursor.getString(1));
                 fav.setAlbum(cursor.getString(2));
                 fav.setPicture(cursor.getString(3));
-                fav.setRating(Integer.parseInt(cursor.getString(4)));
+                fav.setRating(Float.parseFloat(cursor.getString(4)));
                 favList.add(fav);
         }
        return favList;
     }
 
-    public void deleteFavArtist(FavoriteVO favorite) {
+    public boolean deleteFavArtist(FavoriteVO favorite) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_FAVORITE, KEY_ID + " = ?", new String[] { String.valueOf(favorite.getId())});
         db.close();
-
+        return true;
     }
 }

@@ -49,11 +49,9 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesVie
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(new ArtistFavoriteAdapter(getAllFavorites(), new ArtistFavoriteAdapter.OnItemClickListener() {
             @Override public void onItemClick(FavoriteVO item) {
-                Toast.makeText(FavoritesActivity.this, "prueba", Toast.LENGTH_SHORT).show();
-                Log.d("TAG",item.toString());
-                //Intent i = new Intent(FavoritesActivity.this, AlbumActivity.class);
-                //i.putExtra("album", item);
-                //startActivity(i);
+                Intent i = new Intent(FavoritesActivity.this, DeleteFavActivity.class);
+                i.putExtra("favorite", item);
+                startActivity(i);
             }
         }));
     }
