@@ -21,9 +21,10 @@ import java.util.List;
 public class ArtistFavoriteAdapter extends RecyclerView.Adapter<ArtistFavoriteAdapter.MyViewHolder> {
 
     private List<FavoriteVO> artistAllList;
+    private final OnItemClickListener listener;
 
     public interface OnItemClickListener {
-        void onItemClick(Datum item);
+        void onItemClick(FavoriteVO item);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -39,17 +40,23 @@ public class ArtistFavoriteAdapter extends RecyclerView.Adapter<ArtistFavoriteAd
 
         }
 
-        public void bind(final FavoriteVO item) {
+        public void bind(final FavoriteVO item, final OnItemClickListener listener) {
             name.setText(item.getName());
             album.setText(item.getAlbum());
             Glide.with(itemView.getContext()).load(item.getPicture()).into(cover);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
         }
 
     }
 
 
-    public ArtistFavoriteAdapter(List<FavoriteVO> artistAllList) {
+    public ArtistFavoriteAdapter(List<FavoriteVO> artistAllList,  OnItemClickListener listener) {
         this.artistAllList = artistAllList;
+        this.listener = listener;
     }
 
     @Override
@@ -60,7 +67,7 @@ public class ArtistFavoriteAdapter extends RecyclerView.Adapter<ArtistFavoriteAd
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.bind(artistAllList.get(position));
+        holder.bind(artistAllList.get(position),listener);
     }
 
     @Override

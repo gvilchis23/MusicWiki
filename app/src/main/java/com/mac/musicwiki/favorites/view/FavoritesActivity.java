@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 import com.mac.musicwiki.App;
@@ -45,7 +47,15 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesVie
         favoritesPresenter.attachView(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new ArtistFavoriteAdapter(getAllFavorites()));
+        recyclerView.setAdapter(new ArtistFavoriteAdapter(getAllFavorites(), new ArtistFavoriteAdapter.OnItemClickListener() {
+            @Override public void onItemClick(FavoriteVO item) {
+                Toast.makeText(FavoritesActivity.this, "prueba", Toast.LENGTH_SHORT).show();
+                Log.d("TAG",item.toString());
+                //Intent i = new Intent(FavoritesActivity.this, AlbumActivity.class);
+                //i.putExtra("album", item);
+                //startActivity(i);
+            }
+        }));
     }
 
     @Override
