@@ -1,6 +1,10 @@
 package com.mac.musicwiki.album.presenter;
 
+import android.content.Context;
+
+import com.mac.musicwiki.album.model.FavoriteVO;
 import com.mac.musicwiki.album.view.AlbumView;
+import com.mac.musicwiki.database.DatabaseHandler;
 import com.mac.musicwiki.rest.DeezerService;
 import com.mac.musicwiki.search.model.SearchVO;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
@@ -22,6 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AlbumPresenterImpl implements AlbumPresenter {
     AlbumView view;
+    DatabaseHandler db;
 
     @Inject
     public AlbumPresenterImpl(){
@@ -41,7 +46,13 @@ public class AlbumPresenterImpl implements AlbumPresenter {
 
 
     @Override
-    public boolean addToFavorite(String artist) {
-        return false;
+    public void attachDB(DatabaseHandler db) {
+        this.db = db;
+    }
+
+    @Override
+    public boolean addToFavorite(FavoriteVO artist) {
+        db.addFavoriteArtist(artist);
+        return true;
     }
 }

@@ -17,6 +17,8 @@ import com.mac.musicwiki.App;
 import com.mac.musicwiki.R;
 import com.mac.musicwiki.album.model.FavoriteVO;
 import com.mac.musicwiki.album.presenter.AlbumPresenter;
+import com.mac.musicwiki.database.DatabaseHandler;
+import com.mac.musicwiki.favorites.view.FavoritesActivity;
 import com.mac.musicwiki.search.model.Datum;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
 
@@ -34,6 +36,8 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
     @BindView(R.id.btnCheckin) Button btnCheckin;
     @Inject
     AlbumPresenter albumPresenter;
+    DatabaseHandler db = new DatabaseHandler(this);
+    private Datum item;
 
 
     @Override
@@ -44,7 +48,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         albumPresenter.attachView(this);
         ButterKnife.bind(this);
         Intent i = getIntent();
-        Datum item =  (Datum) i.getSerializableExtra("album");
+        item =  (Datum) i.getSerializableExtra("album");
         artist.setText(item.getArtist().getName());
         album.setText(item.getAlbum().getTitle());
         Glide.with(AlbumActivity.this).load(item.getArtist().getPicture()).into(imgCover);
@@ -55,22 +59,24 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         vo.setName(item.getArtist().getName());
         vo.setAlbum(item.getAlbum().getTitle());
         vo.setRating(ratingBar.getNumStars());
-        vo.setPicture(item.getAlbum().getCover());
+        vo.setPicture(item.getArtist().getPicture());
         return vo;
     }
 
     public void checkIn(View view) {
-
+        albumPresenter.attachDB(db);
+        db.addFavoriteArtist(setFavoriteVO(item));
+        addToFavorite(setFavoriteVO(item));
     }
 
     @Override
-    public boolean addToFavorite(String artist) {
-        return false;
+    public boolean addToFavorite(FavoriteVO artist) {
+        albumPresenter.addToFavorite(artist);
+        return true;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_share, menu);
         return true;
     }
@@ -81,7 +87,8 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
             //add the function to perform here
             return(true);
         case R.id.fav:
-            //add the function to perform here
+            Intent i = new Intent(AlbumActivity.this, FavoritesActivity.class);
+            startActivity(i);
             return(true);
         case R.id.share:
             share();

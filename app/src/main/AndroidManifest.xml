@@ -25,6 +25,7 @@
 
         <activity android:name=".search.view.SearchActivity" />
         <activity android:name=".album.view.AlbumActivity" />
+        <activity android:name=".favorites.view.FavoritesActivity"></activity>
     </application>
 
 </manifest>

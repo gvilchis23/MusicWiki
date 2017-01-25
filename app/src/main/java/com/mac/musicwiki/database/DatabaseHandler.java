@@ -63,7 +63,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         // looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
+        while (cursor.moveToNext()) {
             FavoriteVO fav = new FavoriteVO();
                 fav.setId(Integer.parseInt(cursor.getString(0)));
                 fav.setName(cursor.getString(1));

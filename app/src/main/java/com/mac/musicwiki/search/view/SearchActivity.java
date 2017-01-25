@@ -15,6 +15,7 @@ import com.mac.musicwiki.App;
 import com.mac.musicwiki.R;
 import com.mac.musicwiki.album.view.AlbumActivity;
 import com.mac.musicwiki.adapter.ArtistSearchAdapter;
+import com.mac.musicwiki.favorites.view.FavoritesActivity;
 import com.mac.musicwiki.search.model.Datum;
 import com.mac.musicwiki.search.model.SearchVO;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
@@ -83,7 +84,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
             //add the function to perform here
             return(true);
         case R.id.fav:
-            //add the function to perform here
+            Intent i = new Intent(SearchActivity.this, FavoritesActivity.class);
+            startActivity(i);
             return(true);
     }
         return(super.onOptionsItemSelected(item));

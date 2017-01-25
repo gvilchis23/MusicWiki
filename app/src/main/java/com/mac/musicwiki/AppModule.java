@@ -2,6 +2,8 @@ package com.mac.musicwiki;
 
 import com.mac.musicwiki.album.presenter.AlbumPresenter;
 import com.mac.musicwiki.album.presenter.AlbumPresenterImpl;
+import com.mac.musicwiki.favorites.presenter.FavoritesPresenter;
+import com.mac.musicwiki.favorites.presenter.FavoritesPresenterImpl;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
 import com.mac.musicwiki.search.presenter.SearchPresenterImpl;
 
@@ -33,6 +35,12 @@ public class AppModule {
     @Singleton
     AlbumPresenter provideAlbumPresenter() {
         return new AlbumPresenterImpl();
+    }
+
+    @Provides
+    @Singleton
+    FavoritesPresenter provideFavoritesPresenter() {
+        return new FavoritesPresenterImpl();
     }
 
 }
