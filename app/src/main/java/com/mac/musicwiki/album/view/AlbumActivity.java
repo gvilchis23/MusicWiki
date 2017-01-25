@@ -22,6 +22,7 @@ import com.mac.musicwiki.database.DatabaseHandler;
 import com.mac.musicwiki.favorites.view.FavoritesActivity;
 import com.mac.musicwiki.search.model.Datum;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import com.mac.musicwiki.search.view.SearchActivity;
 
 
@@ -116,6 +117,12 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
     }
 
     public boolean share(){
+        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                .text("My favorite album is "+ item.getAlbum().getTitle()+" "+ "played by"+
+                        " "+ item.getArtist().getName()+" "+
+                        "my ranking for it is"+
+                        ratingBar.getRating()+" "+"stars"+"#MusicWiki"+" "+ "#TheBestApp");
+        builder.show();
         return true;
     }
 }
