@@ -65,6 +65,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         vo.setAlbum(item.getAlbum().getTitle());
         vo.setRating(ratingBar.getRating());
         vo.setPicture(item.getArtist().getPicture());
+        vo.setLink(item.getLink());
         return vo;
     }
 

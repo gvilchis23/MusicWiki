@@ -1,6 +1,7 @@
 package com.mac.musicwiki.favorites.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -56,6 +57,12 @@ public class DeleteFavActivity extends AppCompatActivity implements DeleteFavVie
             Intent i = new Intent(DeleteFavActivity.this, FavoritesActivity.class);
             startActivity(i);
         }
+    }
+
+    public void openApp(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(item.getLink()));
+        startActivity(intent);
     }
 
     @Override

@@ -25,6 +25,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_ALBUM = "album";
     private static final String KEY_PICTURE = "picture";
     private static final String KEY_RATING = "rating";
+    private static final String KEY_LINK = "link";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,7 +36,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_FAVORITE_TABLE = "CREATE TABLE " + TABLE_FAVORITE + "("
         + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
         + KEY_ALBUM + " TEXT," + KEY_PICTURE + " TEXT,"
-        + KEY_RATING + " REAL" + ")";
+        + KEY_LINK + " TEXT," + KEY_RATING + " REAL" + ")";
         sqLiteDatabase.execSQL(CREATE_FAVORITE_TABLE);
     }
 
@@ -51,6 +52,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_NAME, favorite.getName());
         values.put(KEY_ALBUM, favorite.getAlbum());
         values.put(KEY_PICTURE, favorite.getPicture());
+        values.put(KEY_LINK, favorite.getLink());
         values.put(KEY_RATING, favorite.getRating());
         db.insert(TABLE_FAVORITE, null, values);
         db.close();
@@ -69,7 +71,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 fav.setName(cursor.getString(1));
                 fav.setAlbum(cursor.getString(2));
                 fav.setPicture(cursor.getString(3));
-                fav.setRating(Float.parseFloat(cursor.getString(4)));
+                fav.setLink(cursor.getString(4));
+                fav.setRating(Float.parseFloat(cursor.getString(5)));
                 favList.add(fav);
         }
        return favList;

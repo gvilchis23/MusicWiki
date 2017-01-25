@@ -27,6 +27,9 @@ public class FavoriteVO implements Serializable {
     @SerializedName("rating")
     @Expose
     private float rating;
+    @SerializedName("link")
+    @Expose
+    private String link;
 
     public Integer getId() {
         return id;
@@ -66,5 +69,13 @@ public class FavoriteVO implements Serializable {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }
