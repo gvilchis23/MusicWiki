@@ -80,9 +80,6 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
-        case R.id.add:
-            //add the function to perform here
-            return(true);
         case R.id.fav:
             Intent i = new Intent(SearchActivity.this, FavoritesActivity.class);
             startActivity(i);
