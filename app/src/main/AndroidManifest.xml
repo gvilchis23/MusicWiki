@@ -23,9 +23,9 @@
             android:name="io.fabric.ApiKey"
             android:value="47e5d34f4ea980269165802661cec65034db3121" />
 
-        <activity android:name=".search.view.SearchActivity" />
-        <activity android:name=".album.view.AlbumActivity" />
-        <activity android:name=".favorites.view.FavoritesActivity"></activity>
+        <activity android:name=".search.view.SearchActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".album.view.AlbumActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".favorites.view.FavoritesActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
