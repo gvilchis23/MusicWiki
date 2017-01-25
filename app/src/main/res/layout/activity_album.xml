@@ -51,4 +51,12 @@
         android:background="@color/gold"
         android:text="ADD TO FAV"/>
 
+   <Button
+     android:id="@+id/linkDeezer"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:onClick="openApp"
+     android:background="@color/gold"
+     android:text="OPEN DEEZER"/>
+
 </LinearLayout>

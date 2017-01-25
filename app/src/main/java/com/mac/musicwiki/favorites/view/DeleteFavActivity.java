@@ -3,6 +3,8 @@ package com.mac.musicwiki.favorites.view;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -60,5 +62,21 @@ public class DeleteFavActivity extends AppCompatActivity implements DeleteFavVie
     public boolean deleteFavorite(FavoriteVO fav) {
         favoritesPresenter.attachDB(db);
         return  favoritesPresenter.deleteFavorite(fav);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_fav, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
+        case R.id.search:
+            Intent i = new Intent(DeleteFavActivity.this, SearchActivity.class);
+            startActivity(i);
+            return(true);
+    }
+        return(super.onOptionsItemSelected(item));
     }
 }

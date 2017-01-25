@@ -1,6 +1,7 @@
 package com.mac.musicwiki.album.view;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -72,6 +73,12 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         albumPresenter.attachDB(db);
         addToFavorite(setFavoriteVO(item));
         hideProgress();
+    }
+
+    public void openApp(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(item.getLink()));
+        startActivity(intent);
     }
 
     @Override
