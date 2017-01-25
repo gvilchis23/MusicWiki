@@ -14,5 +14,7 @@ import java.util.List;
 public interface SearchView extends BaseView {
     SearchVO showAllSearchArtist(String artist);
     void createRecycler(List<Datum> data);
+    void showProgress();
+    void hideProgress();
 
 }
