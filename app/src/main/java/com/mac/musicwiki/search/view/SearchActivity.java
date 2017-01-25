@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mac.musicwiki.App;
 import com.mac.musicwiki.R;
@@ -48,7 +49,12 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @Override
     public SearchVO showAllSearchArtist(String artist) {
-        return searchPresenter.getAllSearchArtist(artist);
+        if(!artist.equals("")){
+            return searchPresenter.getAllSearchArtist(artist);
+        }else{
+            Toast.makeText(this, "please insert a valid text", Toast.LENGTH_SHORT).show();
+            return null;
+        }
     }
 
     @Override
