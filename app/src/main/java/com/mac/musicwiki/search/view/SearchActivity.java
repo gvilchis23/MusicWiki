@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.mac.musicwiki.App;
 import com.mac.musicwiki.R;
@@ -32,6 +34,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     SearchPresenter searchPresenter;
     @BindView(R.id.searchInput) EditText artistText;
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.pb) ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,13 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
 
     @Override
     public SearchVO showAllSearchArtist(String artist) {
-        return searchPresenter.getAllSearchArtist(artist);
+        if(!artist.equals("")){
+            showProgress();
+            return searchPresenter.getAllSearchArtist(artist);
+        }else{
+            Toast.makeText(this, "please insert a valid text", Toast.LENGTH_SHORT).show();
+            return null;
+        }
     }
 
     @Override
@@ -62,7 +71,17 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
                 startActivity(i);
             }
         }));
+        hideProgress();
+    }
 
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override

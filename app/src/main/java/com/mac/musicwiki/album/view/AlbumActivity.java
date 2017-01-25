@@ -22,6 +22,7 @@ import com.mac.musicwiki.favorites.view.FavoritesActivity;
 import com.mac.musicwiki.search.model.Datum;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
+import com.mac.musicwiki.search.view.SearchActivity;
 
 
 import javax.inject.Inject;
@@ -82,12 +83,15 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
-        case R.id.add:
-            //add the function to perform here
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent i;
+        switch(item.getItemId()) {
+        case R.id.search:
+            i = new Intent(AlbumActivity.this, SearchActivity.class);
+            startActivity(i);
             return(true);
         case R.id.fav:
-            Intent i = new Intent(AlbumActivity.this, FavoritesActivity.class);
+            i = new Intent(AlbumActivity.this, FavoritesActivity.class);
             startActivity(i);
             return(true);
         case R.id.share:
