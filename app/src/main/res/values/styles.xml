@@ -8,6 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppThemeMusicWiki" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/purple</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 
 
     <style name="EditTextHint" parent="TextAppearance.AppCompat">
@@ -31,8 +38,12 @@
         <item name="android:scrollbarDefaultDelayBeforeFade">500</item>
     </style>
 
+
+
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">@color/colorAccent</item>
         <item name="colorControlActivated">@color/yellow</item>
     </style>
+
+
 </resources>
