@@ -14,4 +14,6 @@ import java.util.List;
 
 public interface AlbumView extends BaseView {
     boolean addToFavorite(FavoriteVO artist);
+    void showProgress();
+    void hideProgress();
 }
