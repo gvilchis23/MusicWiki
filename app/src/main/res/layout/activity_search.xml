@@ -42,6 +42,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="searchArtist"
+            android:background="@null"
             android:src="@android:drawable/ic_menu_search"/>
 
     </LinearLayout>
