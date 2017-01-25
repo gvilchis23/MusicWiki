@@ -31,5 +31,13 @@
         android:layout_alignEnd="@+id/twitter_login_button"
         android:layout_alignStart="@+id/twitter_login_button" />
 
+    <ImageView
+
+        android:src="@mipmap/musicwiki"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
