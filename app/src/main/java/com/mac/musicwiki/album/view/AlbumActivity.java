@@ -65,7 +65,6 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
 
     public void checkIn(View view) {
         albumPresenter.attachDB(db);
-        db.addFavoriteArtist(setFavoriteVO(item));
         addToFavorite(setFavoriteVO(item));
     }
 
