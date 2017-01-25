@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
     @BindView(R.id.album) TextView album;
     @BindView(R.id.rating) RatingBar ratingBar;
     @BindView(R.id.btnCheckin) Button btnCheckin;
+    @BindView(R.id.pb) ProgressBar progressBar;
     @Inject
     AlbumPresenter albumPresenter;
     DatabaseHandler db = new DatabaseHandler(this);
@@ -66,14 +68,27 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
     }
 
     public void checkIn(View view) {
+        showProgress();
         albumPresenter.attachDB(db);
         addToFavorite(setFavoriteVO(item));
+        hideProgress();
     }
 
     @Override
     public boolean addToFavorite(FavoriteVO artist) {
         albumPresenter.addToFavorite(artist);
         return true;
+    }
+
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
+        Toast.makeText(this, "The album was save correctly", Toast.LENGTH_SHORT).show();
     }
 
     @Override
