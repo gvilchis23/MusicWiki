@@ -21,6 +21,7 @@ import com.mac.musicwiki.database.DatabaseHandler;
 import com.mac.musicwiki.favorites.view.FavoritesActivity;
 import com.mac.musicwiki.search.model.Datum;
 import com.mac.musicwiki.search.presenter.SearchPresenter;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 
 import javax.inject.Inject;
@@ -51,7 +52,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         item =  (Datum) i.getSerializableExtra("album");
         artist.setText(item.getArtist().getName());
         album.setText(item.getAlbum().getTitle());
-        Glide.with(AlbumActivity.this).load(item.getArtist().getPicture()).into(imgCover);
+        Glide.with(AlbumActivity.this).load(item.getArtist().getPictureXl()).into(imgCover);
     }
 
     public FavoriteVO setFavoriteVO(Datum item){
@@ -98,6 +99,16 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
     }
 
     public boolean share(){
+        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                .text("My favorite album is "+ item.getAlbum().getTitle()
+                        +" "+ "played by"
+                        +" "+ item.getArtist().getName()
+                        +" "+ "my ranking for it is"
+                        +" "+ ratingBar.getRating()
+                        +" "+ "stars"
+                        +" "+ "#MusicWiki"
+                        +" "+ "#TheBestApp");
+        builder.show();
         return true;
     }
 }

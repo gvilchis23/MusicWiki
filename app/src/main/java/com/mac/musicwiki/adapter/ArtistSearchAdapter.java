@@ -46,7 +46,7 @@ public class ArtistSearchAdapter extends RecyclerView.Adapter<ArtistSearchAdapte
         public void bind(final Datum item, final OnItemClickListener listener) {
             name.setText(item.getArtist().getName().trim());
             album.setText(item.getAlbum().getTitle().trim());
-            Glide.with(itemView.getContext()).load(item.getArtist().getPicture()).into(cover);
+            Glide.with(itemView.getContext()).load(item.getArtist().getPictureMedium()).into(cover);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);
