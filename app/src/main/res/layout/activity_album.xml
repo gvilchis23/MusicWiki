@@ -12,10 +12,10 @@
     android:orientation="vertical"
     android:background="@color/tw__composer_black">
 
-   <ImageView
-       android:id="@+id/imageAlbum"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/imageAlbum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/artis"
@@ -37,26 +37,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+
     <ProgressBar
         android:id="@+id/pb"
         android:visibility="gone"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnCheckin"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="checkIn"
-        android:background="@color/gold"
-        android:text="ADD TO FAV"/>
+        android:layout_height="52dp"
+        android:gravity="center" >
 
-   <Button
-     android:id="@+id/linkDeezer"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:onClick="openApp"
-     android:background="@color/gold"
-     android:text="OPEN DEEZER"/>
+        <Button
+            android:id="@+id/btnCheckin"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginRight="20dp"
+            android:onClick="checkIn"
+            android:background="@color/fab"
+            android:textStyle="bold"
+            android:text="  + favorites "
+            android:textColor="@color/tw__solid_white"/>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/btnCheckin"
+            android:background="@color/tw__composer_black"
+            android:gravity="center"
+            android:src="@mipmap/deezerbutton1"
+            android:onClick="openApp"/>
+    </RelativeLayout>
+
 
 </LinearLayout>
