@@ -112,10 +112,12 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         case R.id.search:
             i = new Intent(AlbumActivity.this, SearchActivity.class);
             startActivity(i);
+            finish();
             return(true);
         case R.id.fav:
             i = new Intent(AlbumActivity.this, FavoritesActivity.class);
             startActivity(i);
+            finish();
             return(true);
         case R.id.share:
             share();

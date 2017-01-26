@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     public void enterGuest(View view) {
         Intent i = new Intent(MainActivity.this, SearchActivity.class);
         startActivity(i);
+        finish();
     }
 
     @Override

@@ -101,6 +101,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
         case R.id.fav:
             Intent i = new Intent(SearchActivity.this, FavoritesActivity.class);
+            //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
             return(true);
     }

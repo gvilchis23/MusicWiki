@@ -51,7 +51,9 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesVie
             @Override public void onItemClick(FavoriteVO item) {
                 Intent i = new Intent(FavoritesActivity.this, DeleteFavActivity.class);
                 i.putExtra("favorite", item);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
+                finish();
             }
         }));
     }
@@ -73,7 +75,9 @@ public class FavoritesActivity extends AppCompatActivity implements FavoritesVie
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
         case R.id.search:
             Intent i = new Intent(FavoritesActivity.this, SearchActivity.class);
+            //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
+            finish();
             return(true);
     }
         return(super.onOptionsItemSelected(item));
