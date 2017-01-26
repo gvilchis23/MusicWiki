@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void success(Result<TwitterSession> result) {
                 // TODO: Remove toast and use the TwitterSession's userID
-                //TwitterSession session = result.data;
                 Intent i = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(i);
 
