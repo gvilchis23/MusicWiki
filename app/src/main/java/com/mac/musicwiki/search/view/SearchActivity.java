@@ -55,7 +55,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView {
             showProgress();
             return searchPresenter.getAllSearchArtist(artist);
         }else{
-            Toast.makeText(this, "please insert a valid text", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please insert a valid text", Toast.LENGTH_SHORT).show();
             return null;
         }
     }

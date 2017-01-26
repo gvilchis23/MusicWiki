@@ -32,12 +32,13 @@
         android:layout_alignStart="@+id/twitter_login_button" />
 
     <ImageView
-
         android:src="@mipmap/musicwiki"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/imageView2"
+        android:layout_below="@+id/btnGuest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
 
 </RelativeLayout>

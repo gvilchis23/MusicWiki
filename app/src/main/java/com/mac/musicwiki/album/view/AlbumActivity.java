@@ -56,7 +56,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         item =  (Datum) i.getSerializableExtra("album");
         artist.setText(item.getArtist().getName());
         album.setText(item.getAlbum().getTitle());
-        Glide.with(AlbumActivity.this).load(item.getArtist().getPicture()).into(imgCover);
+        Glide.with(AlbumActivity.this).load(item.getArtist().getPictureXl()).into(imgCover);
     }
 
     public FavoriteVO setFavoriteVO(Datum item){
@@ -64,7 +64,7 @@ public class AlbumActivity extends AppCompatActivity implements AlbumView {
         vo.setName(item.getArtist().getName());
         vo.setAlbum(item.getAlbum().getTitle());
         vo.setRating(ratingBar.getRating());
-        vo.setPicture(item.getArtist().getPicture());
+        vo.setPicture(item.getArtist().getPictureXl());
         vo.setLink(item.getLink());
         return vo;
     }
