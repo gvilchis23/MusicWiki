@@ -82,7 +82,6 @@ public class DeleteFavActivity extends AppCompatActivity implements DeleteFavVie
     public boolean onOptionsItemSelected(MenuItem item) { switch(item.getItemId()) {
         case R.id.search:
             Intent i = new Intent(DeleteFavActivity.this, SearchActivity.class);
-            //i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
             finish();
             return(true);
